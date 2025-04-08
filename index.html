@@ -1,48 +1,53 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <title>Hüpfender CSS-Hase</title>
-    <style>
-body {
-  margin: 0;
-}
-text {
-  font-size: 20px;
-}
-    </style>
+  <meta charset="UTF-8">
+  <title>Candle Fun (Pure CSS Animation)</title>
+  <link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
-  <svg viewBox="0 0 240 300">
-  <defs>
-    <filter id="blur">
-      <feGaussianBlur stdDeviation="2" />
-    </filter>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <div class="candles">
+    <div class="light__wave"></div>
+    <div class="candle1">
+      <div class="candle1__body">
+        <div class="candle1__eyes">
+          <span class="candle1__eyes-one"></span>
+          <span class="candle1__eyes-two"></span>
+        </div>
+        <div class="candle1__mouth"></div>
+      </div>
+      <div class="candle1__stick"></div>
+    </div>
+    
+    <div class="candle2">
+      <div class="candle2__body">
+        <div class="candle2__eyes">
+          <div class="candle2__eyes-one"></div>
+          <div class="candle2__eyes-two"></div>
+        </div>
+      </div>
+      <div class="candle2__stick"></div>
+    </div>
+    <div class="candle2__fire"></div>
+    <div class="sparkles-one"></div>
+    <div class="sparkles-two"></div>
+    <div class="candle__smoke-one">
 
-    <linearGradient id="fadeToRight" x1="0%" x2="100%">
-      <stop offset="0%" stop-color="white" />
-      <stop offset="80%" stop-color="black" />
-    </linearGradient>
+    </div>
+    <div class="candle__smoke-two">
 
-    <linearGradient id="fadeToLeft" x1="0%" x2="100%">
-      <stop offset="0%" stop-color="black" />
-      <stop offset="20%" stop-color="white" />
-    </linearGradient>
+    </div>
+    
+  </div>
+  <div class="floor">
+  </div>
+  
 
-    <mask id="fadeToRightMask">
-      <rect width="100%" height="100%" fill="url(#fadeToRight)" />
-    </mask>
-
-    <mask id="fadeToLeftMask">
-      <rect width="100%" height="100%" fill="url(#fadeToLeft)" />
-    </mask>
-  </defs>
-
-  <!-- <text> is only inside this <g> so we can duplicate it with <use> -->
-  <g mask="url(#fadeToRightMask)">
-    <text dx="0" dy="80" id="text">i think i need my eyes tested</text>
-  </g>
-  <use xlink:href="#text" filter="url(#blur)" mask="url(#fadeToLeftMask)" />
-</svg>
+</div>
+<!-- partial -->
+  
 </body>
 </html>
