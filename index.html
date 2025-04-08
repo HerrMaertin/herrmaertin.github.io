@@ -1,59 +1,112 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Regenbogen Blinktext</title>
+    <title>Hüpfender CSS-Hase</title>
     <style>
-        html, body {
+        body {
             margin: 0;
             padding: 0;
-            height: 100%;
+            background: #87CEEB; /* Himmelblau */
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #000;
         }
 
-        .rainbow-text {
-            font-family: Arial, sans-serif;
-            font-size: 20vw;
-            font-weight: bold;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            
-            background-image: linear-gradient(
-                90deg,
-                #ff0000 0%,
-                #ff8000 14.28%,
-                #ffff00 28.56%,
-                #00ff00 42.84%,
-                #00ffff 57.12%,
-                #0000ff 71.4%,
-                #8000ff 85.68%,
-                #ff0080 100%
-            );
-            
-            background-size: 400% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: rainbow 2s linear infinite, blink 1s ease infinite;
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: #228B22; /* Grasgrün */
         }
 
-        @keyframes rainbow {
-            0% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .rabbit {
+            position: absolute;
+            bottom: 100px; /* Start über dem Boden */
+            left: -100px; /* Start außerhalb des Bildschirms */
+            width: 100px;
+            height: 100px;
+            animation: hop 5s infinite linear;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        /* Körper des Hasen */
+        .body {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background: #fff; /* Weißer Körper */
+            border-radius: 50%;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* Kopf des Hasen */
+        .head {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #fff; /* Weißer Kopf */
+            border-radius: 50%;
+            bottom: 40px;
+            left: 0px;
+        }
+
+        /* Ohren des Hasen */
+        .ear {
+            position: absolute;
+            width: 15px;
+            height: 30px;
+            background: #fff; /* Weiße Ohren */
+            border-radius: 15px / 30px; /* Ovalform */
+        }
+
+        .ear.left {
+            bottom: 70px;
+            left: -5px;
+        }
+
+        .ear.right {
+            bottom: 70px;
+            left: 25px;
+        }
+
+        /* Füße des Hasen */
+        .foot {
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            background: #fff; /* Weiße Füße */
+            border-radius: 50%;
+        }
+
+        .foot.left {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .foot.right {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        /* Animation für das Hüpfen */
+        @keyframes hop {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(200%) translateY(-50px); }
+            50% { transform: translateX(400%) translateY(0); }
+            75% { transform: translateX(600%) translateY(-50px); }
+            100% { transform: translateX(800%) translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="rainbow-text">HALLO</div>
+    <div class="ground"></div>
+    <div class="rabbit">
+        <div class="body"></div>
+        <div class="head"></div>
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+        <div class="foot left"></div>
+        <div class="foot right"></div>
+    </div>
 </body>
 </html>
