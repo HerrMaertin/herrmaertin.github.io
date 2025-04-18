@@ -1,53 +1,145 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Candle Fun (Pure CSS Animation)</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onkels Met</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f9f5e9;
+      color: #4b3f2f;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+    }
 
+    header {
+      background-color: #a67c52;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      color: #5a3e2b;
+    }
+
+    .intro, .gallery, .kontakt {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fffef8;
+      border: 1px solid #e2d4b7;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .images {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .images img {
+      width: 30%;
+      border: 3px solid #d4b483;
+      border-radius: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form label, form input, form textarea {
+      margin-bottom: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #a67c52;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #8c6239;
+    }
+
+    footer {
+      background-color: #d4b483;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    #dankeNachricht {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="wrapper">
-  <div class="candles">
-    <div class="light__wave"></div>
-    <div class="candle1">
-      <div class="candle1__body">
-        <div class="candle1__eyes">
-          <span class="candle1__eyes-one"></span>
-          <span class="candle1__eyes-two"></span>
-        </div>
-        <div class="candle1__mouth"></div>
-      </div>
-      <div class="candle1__stick"></div>
-    </div>
-    
-    <div class="candle2">
-      <div class="candle2__body">
-        <div class="candle2__eyes">
-          <div class="candle2__eyes-one"></div>
-          <div class="candle2__eyes-two"></div>
-        </div>
-      </div>
-      <div class="candle2__stick"></div>
-    </div>
-    <div class="candle2__fire"></div>
-    <div class="sparkles-one"></div>
-    <div class="sparkles-two"></div>
-    <div class="candle__smoke-one">
+  <header>
+    <h1>Onkels Met</h1>
+    <p>Ehrlicher Honigwein aus Leidenschaft</p>
+  </header>
 
-    </div>
-    <div class="candle__smoke-two">
+  <section class="intro">
+    <h2>Über unseren Met</h2>
+    <p>Onkels Met entsteht aus reinem Honig, Wasser und Hefe – ganz ohne Schnickschnack. Nach alter Tradition, mit Liebe zum Handwerk und viel Geduld gereift.</p>
+  </section>
 
+  <section class="gallery">
+    <h2>Einblicke in die Herstellung</h2>
+    <div class="images">
+      <img src="https://images.unsplash.com/photo-1559561854-99d5f25e5c3c" alt="Metfass">
+      <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb" alt="Honigglas">
+      <img src="https://images.unsplash.com/photo-1603398938378-bdf2b86c9a37" alt="Metflaschen">
     </div>
-    
-  </div>
-  <div class="floor">
-  </div>
-  
+  </section>
 
-</div>
-<!-- partial -->
-  
+  <section class="kontakt">
+    <h2>Kontakt</h2>
+    <form id="kontaktForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="nachricht">Nachricht:</label>
+      <textarea id="nachricht" rows="5" required></textarea>
+
+      <button type="submit">Absenden</button>
+    </form>
+    <p id="dankeNachricht" style="display: none;">Danke für deine Nachricht!</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Onkels Met – Natürlich. Handgemacht. Echt.</p>
+  </footer>
+
+  <script>
+    document.getElementById('kontaktForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('kontaktForm').style.display = 'none';
+      document.getElementById('dankeNachricht').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
