@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Onkels Met</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     html {
       scroll-behavior: smooth;
     }
+
     body {
       font-family: 'Georgia', serif;
       background-color: #fdf8ef;
@@ -33,6 +35,17 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 1.1rem;
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: white;
+      bottom: -5px;
+      left: 0;
     }
 
     nav a:hover {
@@ -54,11 +67,10 @@
     section {
       padding: 2rem;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 2rem auto;
       background-color: #fffef8;
       border: 1px solid #e2d4b7;
       border-radius: 8px;
-      margin-bottom: 2rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
@@ -74,9 +86,11 @@
     }
 
     .images img {
-      width: 30%;
+      width: 100%;
+      max-width: 250px;
       border: 3px solid #d4b483;
       border-radius: 8px;
+      object-fit: cover;
     }
 
     form {
@@ -92,6 +106,8 @@
       padding: 0.5rem;
       border: 1px solid #ccc;
       border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
     }
 
     button {
@@ -101,6 +117,7 @@
       padding: 0.75rem;
       border-radius: 4px;
       cursor: pointer;
+      font-size: 1rem;
     }
 
     button:hover {
@@ -117,20 +134,21 @@
     #dankeNachricht {
       color: green;
       font-weight: bold;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#start">Start</a>
-    <a href="#geschichte">Unsere Geschichte</a>
-    <a href="#galerie">Galerie</a>
-    <a href="#kontakt">Kontakt</a>
+    <a href="#start" class="nav-link">Start</a>
+    <a href="#geschichte" class="nav-link">Unsere Geschichte</a>
+    <a href="#galerie" class="nav-link">Galerie</a>
+    <a href="#kontakt" class="nav-link">Kontakt</a>
   </nav>
 
   <header id="start">
-    <img src="logo.png" alt="Onkels Met Logo" />
+    <img src="logo.png" alt="Onkels Met Logo" onerror="this.style.display='none';" />
     <h1>Onkels Met</h1>
     <p>Ehrlicher Honigwein aus Leidenschaft</p>
   </header>
@@ -159,14 +177,17 @@
     <h2>Kontakt</h2>
     <form id="kontaktForm">
       <label for="name">Name:</label>
-      <input type="text" id="name" required>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">E-Mail (optional):</label>
+      <input type="email" id="email" name="email">
 
       <label for="nachricht">Nachricht:</label>
-      <textarea id="nachricht" rows="5" required></textarea>
+      <textarea id="nachricht" name="nachricht" rows="5" required></textarea>
 
       <button type="submit">Absenden</button>
     </form>
-    <p id="dankeNachricht" style="display: none;">Danke für deine Nachricht!</p>
+    <p id="dankeNachricht" style="display: none;">Danke für deine Nachricht! Wir melden uns bald bei dir.</p>
   </section>
 
   <footer>
@@ -174,10 +195,32 @@
   </footer>
 
   <script>
+    // Formular-Handling
     document.getElementById('kontaktForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      document.getElementById('kontaktForm').style.display = 'none';
+      this.style.display = 'none';
       document.getElementById('dankeNachricht').style.display = 'block';
+    });
+
+    // Aktive Navigation je nach Scroll-Position
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
     });
   </script>
 </body>
