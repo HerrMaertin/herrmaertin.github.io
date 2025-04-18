@@ -5,33 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Onkels Met</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Georgia', serif;
-      background-color: #f9f5e9;
+      background-color: #fdf8ef;
       color: #4b3f2f;
       margin: 0;
       padding: 0;
       background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
     }
 
-    header {
+    nav {
       background-color: #a67c52;
-      padding: 2rem;
-      text-align: center;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
       color: white;
-      background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
+    nav a:hover {
+      text-decoration: underline;
     }
 
-    h2 {
-      color: #5a3e2b;
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f5e9d3;
     }
 
-    .intro, .gallery, .kontakt {
+    header img {
+      width: 200px;
+      max-width: 90%;
+      margin-bottom: 1rem;
+    }
+
+    section {
       padding: 2rem;
       max-width: 800px;
       margin: 0 auto;
@@ -40,6 +60,10 @@
       border-radius: 8px;
       margin-bottom: 2rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h1, h2 {
+      color: #5a3e2b;
     }
 
     .images {
@@ -97,17 +121,32 @@
   </style>
 </head>
 <body>
-  <header>
+
+  <nav>
+    <a href="#start">Start</a>
+    <a href="#geschichte">Unsere Geschichte</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+  <header id="start">
+    <img src="logo.png" alt="Onkels Met Logo" />
     <h1>Onkels Met</h1>
     <p>Ehrlicher Honigwein aus Leidenschaft</p>
   </header>
 
-  <section class="intro">
+  <section>
     <h2>Über unseren Met</h2>
-    <p>Onkels Met entsteht aus reinem Honig, Wasser und Hefe – ganz ohne Schnickschnack. Nach alter Tradition, mit Liebe zum Handwerk und viel Geduld gereift.</p>
+    <p>Onkels Met entsteht aus reinem Wasser, bestem Honig und traditioneller Hefe – ganz ohne künstliche Zusätze. Mit Liebe zum Handwerk und viel Geduld gereift.</p>
   </section>
 
-  <section class="gallery">
+  <section id="geschichte">
+    <h2>Unsere Geschichte</h2>
+    <p>Onkel ist seit vielen Jahren leidenschaftlicher Imker. Seine tiefe Verbindung zur Natur und sein Wissen über die Bienenwelt führten ihn schließlich zu einer besonderen Idee: Warum nicht aus dem goldenen Honig ein uraltes Getränk wieder zum Leben erwecken?</p>
+    <p>So begann er, sich intensiv mit der Herstellung von Met zu beschäftigen. Über Jahre hinweg hat er Rezepte verfeinert, Techniken perfektioniert und immer mit Geduld gearbeitet. Heute steht „Onkels Met“ für ehrlichen, handgemachten Honigwein – ein Tropfen mit Geschichte und Herzblut.</p>
+  </section>
+
+  <section id="galerie">
     <h2>Einblicke in die Herstellung</h2>
     <div class="images">
       <img src="https://images.unsplash.com/photo-1559561854-99d5f25e5c3c" alt="Metfass">
@@ -116,7 +155,7 @@
     </div>
   </section>
 
-  <section class="kontakt">
+  <section id="kontakt">
     <h2>Kontakt</h2>
     <form id="kontaktForm">
       <label for="name">Name:</label>
